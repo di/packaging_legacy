@@ -1,0 +1,43 @@
+name: Test
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/test.yml"
+      - "**.py"
+  push:
+    paths:
+      - ".github/workflows/test.yml"
+      - "**.py"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / ${{ matrix.python_version }}
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [Ubuntu, Windows, macOS]
+        python_version:
+          ["3.7", "3.8", "3.9", "3.10", "3.11", "pypy3.7", "pypy3.8", "pypy3.9"]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        name: Install Python ${{ matrix.python_version }}
+        with:
+          python-version: ${{ matrix.python_version }}
+          cache: "pip"
+
+      - name: Run nox
+        run: |
+          # Need to remove "-dev" suffix
+          INTERPRETER=${{ matrix.python_version }}
+          INTERPRETER=${INTERPRETER/-dev/}
+          pipx run nox --error-on-missing-interpreters -s tests-${INTERPRETER}
+        shell: bash

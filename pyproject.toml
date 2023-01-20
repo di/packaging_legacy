@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools >= 40.6.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "packaging_legacy"
+description = "Core utilities for legacy Python packages"
+version = "23.0"
+readme = "README.md"
+authors = [{name = "Dustin Ingram", email = "di@python.org"}]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "License :: OSI Approved :: BSD License",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["packaging>=23.0"]
+
+[project.urls]
+Source = "https://github.com/di/packaging_legacy"
+
+[tool.coverage.run]
+branch = true
+
+[tool.mypy]
+strict = true
+show_error_codes = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+
+[[tool.mypy.overrides]]
+module = ["_manylinux"]
+ignore_missing_imports = true
+
+[tool.isort]
+profile = "black"
+combine_as_imports = true

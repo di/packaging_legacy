@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "packaging_legacy"
 description = "Core utilities for legacy Python packages"
-version = "23.0"
+version = "23.0.post0"
 readme = "README.md"
 authors = [{name = "Dustin Ingram", email = "di@python.org"}]
 classifiers = [

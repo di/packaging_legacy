@@ -23,6 +23,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
+  "Typing :: Typed",
 ]
 dependencies = ["packaging>=23.0"]
 
@@ -44,3 +45,6 @@ ignore_missing_imports = true
 [tool.isort]
 profile = "black"
 combine_as_imports = true
+
+[tool.setuptools.package_data]
+packaging_legacy = ["py.typed"]

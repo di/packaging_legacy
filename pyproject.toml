@@ -45,6 +45,3 @@ ignore_missing_imports = true
 [tool.isort]
 profile = "black"
 combine_as_imports = true
-
-[tool.setuptools.package_data]
-packaging_legacy = ["py.typed"]

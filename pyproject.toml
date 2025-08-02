@@ -8,6 +8,7 @@ description = "Core utilities for legacy Python packages"
 version = "23.0.post0"
 readme = "README.md"
 license = "Apache-2.0 OR BSD-2-Clause"
+license-files = ["LICENSE", "LICENSE.APACHE", "LICENSE.BSD"]
 authors = [{name = "Dustin Ingram", email = "di@python.org"}]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
